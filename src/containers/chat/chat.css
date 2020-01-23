@@ -1,0 +1,19 @@
+.chat {
+  background: white;
+  min-height: 100vh;
+  display: flex;
+}
+
+.theOtherSide{
+  min-height: 100vh;
+  width: 100%;
+}
+
+.noChannel{
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 200px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.3);
+}

@@ -26,7 +26,7 @@ const SendBox = ({ channel, username }) => {
 
   const post = () => {
     // let dic = ["channel_id": chnId,"user_id": userId, "username": userName,"content": input];
-    axios.post(`http://www.dogetek.no/api/api.php/channel_posts/`, {
+    axios.post(`https://www.dogetek.no/api/api.php/channel_posts/`, {
       channel_id: channel.id,
       user_id: "14",
       username: username,

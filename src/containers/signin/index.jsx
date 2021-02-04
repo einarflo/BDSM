@@ -6,7 +6,7 @@ import Dogetek from '../../images/Small-Logo.png';
 
 import bdsm from '../../images/BDSM2.png';
 
-const Signin = ({ setUser }) => {
+const Signin = ({ setUser, error }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,6 +19,7 @@ const Signin = ({ setUser }) => {
     <SplashScreenWrapper>
       <LoginWrapper>
         <BDSMLogo src={bdsm} />
+        {error && <Error>Something has gone wrong. Maybe try another password?</Error>}
         <FormInput placeholder="Username" onChange={e => setUsername(e.target.value)} />
         <FormInput placeholder="Password" type="password" onChange={e => setPassword(e.target.value)} onKeyPress={(e) => {
           if ((e.key === 'Enter') && (e.target.value !== undefined)) {
@@ -83,6 +84,17 @@ const Description = styled.div`
         text-align: center;
         padding-bottom: 40px;
         color: #FFFFFF50;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 25vw;
+        min-width: 400px;
+      `;
+
+const Error = styled.div`
+        text-align: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        color: #D53F3F;
         margin-left: auto;
         margin-right: auto;
         max-width: 25vw;

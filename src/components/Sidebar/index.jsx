@@ -9,7 +9,7 @@ const Sidebar = ({ logout, selectChannel }) => {
   const [channels, setChannels] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://www.dogetek.no/api/api.php/channels/`, { mode: 'no-cors' })
+    axios.get(`https://www.dogetek.no/api/api.php/channels/`, { mode: 'no-cors' })
       .then(res => setChannels(res.data))
       .catch(err => {
         console.log("Something fishy is going on");

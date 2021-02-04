@@ -22,17 +22,21 @@ const App = () => {
 
   const setUser = (username = "admin", password) => {
     // Response is 302 on success ...
+    // Security by obscurity ?
     axios.post(`https://www.dogetek.no/intraDoge/login.php`, `username=${username}&password=${password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' } })
       .then(res => {
         console.log(res);
-        setError(true);
+        if (res.status === 200 && res.data.substring(0, 12) !== "Login Failed") {
+          setError(false);
+          setUsername(username);
+        } else {
+          setError(true);
+
+        }
       })
       .catch(err => {
         console.log(err);
-        setError(false);
-
-        // Security by obscurity ?
-        setUsername(username);
+        setError(true);
       });
   }
   if (showSplashScreen) {

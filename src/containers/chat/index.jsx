@@ -15,7 +15,7 @@ const Chat = ({ username, logout }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (channel) {
-        axios.get(`http://www.dogetek.no/api/api.php/channel_posts/${channel.id}/?hash=${Math.random() * 21991919393914999419}`, { mode: 'no-cors' })
+        axios.get(`https://www.dogetek.no/api/api.php/channel_posts/${channel.id}/?hash=${Math.random() * 21991919393914999419}`, { mode: 'no-cors' })
           .then(res => {
             if (JSON.stringify(res.data) !== JSON.stringify(posts)) {
               setPosts(res.data);

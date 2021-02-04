@@ -18,26 +18,30 @@ const App = () => {
   const [username, setUsername] = useState();
   const [showSplashScreen, setShowSplashScreen] = useState(true);
 
-  const setUser = (username = "admin") => {
-    // Although this doesn't really do anything - i'll leave it be
-    axios.post(`https://www.dogetek.no/intraDoge/login.php`, {
-      username: username,
-      password: "admin",
-    }, { headers: { 'content-type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' } })
+  const [error, setError] = useState(false);
+
+  const setUser = (username = "admin", password) => {
+    // Response is 302 on success ...
+    axios.post(`https://www.dogetek.no/intraDoge/login.php`, `username=${username}&password=${password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded', 'Access-Control-Allow-Origin': '*' } })
       .then(res => {
         console.log(res);
-        // Do something
+        setError(true);
       })
       .catch(err => {
-        console.log("Something fishy is going on");
+        console.log(err);
+        setError(false);
+
+        // Security by obscurity ?
+        setUsername(username);
       });
-    // Good security
-    setUsername(username);
   }
   if (showSplashScreen) {
     return <Splash />;
   }
-  return <Signin />;
+  if (username) {
+    return <Chat username={username} logout={() => setUsername()} />;
+  }
+  return <Signin setUser={setUser} error={error} />;
 
   if (username) {
     return <Chat username={username} logout={() => setUsername()} />;

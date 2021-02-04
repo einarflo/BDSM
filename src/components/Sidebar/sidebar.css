@@ -1,43 +1,7 @@
-.sidebar {
-  /* background: linear-gradient(to right, #56578A , #363544); */
-  background-image: radial-gradient(farthest-corner at 40px 40px,
-      #56578A, #363544);
-  width: 300px;
-  min-height: 100vh;
-}
 
 .channels {
   margin-top: 40px;
   margin-left: 80px;
 }
 
-.channelList {
-  padding: 20px;
-  width: 260px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 
-}
-.channel {
-  color: white;
-  font-size: 20px;
-  text-overflow: ellipsis;
-  /* line-height: 30px; */
-  margin-top: 10px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-
-}
-
-.signout {
-  color: white;
-  font-size: 20px;
-  text-overflow: ellipsis;
-  /* line-height: 30px; */
-  margin-top: 40px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-
-}

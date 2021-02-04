@@ -11,11 +11,13 @@ const SendBox = ({ channel, username }) => {
   const inputChanged = (event) => {
     console.log(event.key === 'Enter');
     if (event.key === 'Enter') {
+      event.preventDefault();
       sendClicked();
     }
   }
 
   const sendClicked = () => {
+    // check for only spaces - regex
     if (!isEmpty(inputText)) {
       post();
       setInputText("");
@@ -41,37 +43,55 @@ const SendBox = ({ channel, username }) => {
   }
 
   return (
-    <div className={style.sendbox}>
-      <InputBox>
-        <InputText type="text" onChange={event => setInputText(event.target.value)} onKeyPress={event => inputChanged(event)} value={inputText} />
-      </InputBox>
-      <div className={style.sendbuttonbox} onClick={sendClicked}>
-        <div className={style.button}>
-          <div className={style.send}>
-            SEND
+    <ContentWrapper>
+      <InputBoxWrapper>
+        <InputBox>
+          <InputText type="text" placeholder={`Write to #${channel.name}`} onChange={event => setInputText(event.target.value)} onKeyPress={event => inputChanged(event)} value={inputText} />
+        </InputBox>
+        <div className={style.sendbuttonbox} onClick={sendClicked}>
+          <div className={style.button}>
+            <div className={style.send}>
+              SEND
             </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </InputBoxWrapper>
+    </ContentWrapper>
   );
 }
+
+const ContentWrapper = styled.div`
+  width: 100%;
+`;
+
+const InputBoxWrapper = styled.div`
+  width: calc(100% - 20px);
+  height: 95px;
+  display: -webkit-box;
+  margin-top: 15px;
+  margin-bottom: 20px;
+`;
 
 const InputBox = styled.div`
   width: 80%;
   height: 100%;
-  background: white;
 `;
 
-const InputText = styled.input`
+const InputText = styled.textarea`
   word-wrap: break-word;
   word-break: break-all;
-  height: 100%;
-  width: 100%;
-  background: #eeeeee;
+  height: calc(100% - 24px);
+  width: calc(100% - 40px);
+  background: #191C23;
   font-size: 15px;
-  border-radius: 5px;
-  
-  
+  box-shadow inset 1px 1px 5px #000000;
+  border: none;
+  font-family : 'Avenir';
+  border-radius: 8px;
+  outline: none;
+  color: white;
+  resize: none;
+  padding: 12px 20px;
 `;
 
 export default SendBox;

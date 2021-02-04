@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import Sidebar from '../../components/Sidebar';
 import Topbar from '../../components/Topbar';
 import ChatView from '../../components/ChatView';
@@ -29,7 +30,7 @@ const Chat = ({ username, logout }) => {
   }, [channel, posts]);
 
   return (
-    <div className="chat">
+    <Background>
       <Sidebar selectChannel={setChannel} logout={logout} />
       {
         channel ?
@@ -43,8 +44,16 @@ const Chat = ({ username, logout }) => {
             Select a channel
           </div>
       }
-    </div>
+    </Background>
   );
 }
+
+const Background = styled.div`
+  height: 100vh;
+  width: 100vw;
+  font-family : 'Avenir';
+  background-image: linear-gradient(180deg, #3B3F48 0%, #1A1D25 100%);
+  display: flex;
+`;
 
 export default Chat;

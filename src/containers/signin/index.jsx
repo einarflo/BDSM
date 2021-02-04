@@ -51,6 +51,7 @@ const LogginButton = styled.div`
       
         background-image: linear-gradient(-135deg, #D53F3F 0%, #AB3232 100%);
         box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.4);
+       
         border-radius: 8px;
       
         font-family : 'Avenir';
@@ -72,6 +73,7 @@ const FormInput = styled.input`
         transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
         max-width: 500px;
         margin: auto;
+        border: none;
         margin-bottom: 20px;
         box-shadow inset 1px 1px 5px #000000;
         border-radius: 8px;

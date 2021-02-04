@@ -15,7 +15,7 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState("");
   const [showSplashScreen, setShowSplashScreen] = useState(true);
 
   const [error, setError] = useState(false);

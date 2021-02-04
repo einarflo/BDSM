@@ -31,7 +31,7 @@ const Chat = ({ username, logout }) => {
 
   return (
     <Background>
-      <Sidebar selectChannel={setChannel} logout={logout} />
+      <Sidebar selectChannel={setChannel} logout={logout} username={username} />
       {
         channel ?
           <div className="theOtherSide">
